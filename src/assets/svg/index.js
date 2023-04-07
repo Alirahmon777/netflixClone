@@ -11,7 +11,7 @@ import lang from "./lang.svg";
 import close from "./close.svg";
 import topTen from "./Top10Badge.svg";
 import play from "./Play.svg";
-import detail from "./detail.svg";
+import detail from "./Detail.svg";
 import playWhite from "./play-white.svg";
 import star from "./star.svg";
 
