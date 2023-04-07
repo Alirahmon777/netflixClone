@@ -10,7 +10,7 @@ import youtube from "./youtube.svg";
 import lang from "./lang.svg";
 import close from "./close.svg";
 import topTen from "./Top10Badge.svg";
-import play from "./play.svg";
+import play from "./Play.svg";
 import detail from "./detail.svg";
 import playWhite from "./play-white.svg";
 import star from "./star.svg";
