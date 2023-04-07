@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./assets/fonts/NetflixSans-Regular.otf"),
+    url("./assets/fonts/NetflixSans-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Light";
+  font-weight: 300;
+  font-style: normal;
+  src: url("./assets/fonts/NetflixSans-Light.otf"),
+    url("./assets/fonts/NetflixSans-Light.woff2");
+}
+
+@font-face {
+  font-family: "Medium";
+  font-weight: 500;
+  font-style: normal;
+  src: url("./assets/fonts/NetflixSans-Medium.otf"),
+    url("./assets/fonts/NetflixSans-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Bold";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./assets/fonts/NetflixSans-Bold.otf"),
+    url("./assets/fonts/NetflixSans-Bold.woff2");
+}
+
+body {
+  font-family: "Regular";
+}
+
+::selection {
+  background: #b9090b;
+  color: white;
+}
+
+.films-item:hover .films-text {
+  transform: translateY(-208px);
+  opacity: 1;
+}
+
+.films-post:hover .films-text {
+  transform: translateY(-108px);
+  opacity: 1;
+}
