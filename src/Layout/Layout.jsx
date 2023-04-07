@@ -1,8 +1,11 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Footer, Header } from "../components";
 
-const Layout = () => {
+const Layout = ({ redirectPath = "/signup" }) => {
+  if (!localStorage.getItem("token")) {
+    return <Navigate to={redirectPath} replace />;
+  }
   return (
     <>
       <Header />
