@@ -22,7 +22,7 @@ const SignUp = () => {
           variant: "success",
         });
         localStorage.setItem("token", response.data.token);
-        window.location.replace("/home");
+        window.location.replace("/");
         return response.data;
       })
       .catch((error) => {
