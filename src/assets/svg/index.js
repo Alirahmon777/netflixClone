@@ -14,9 +14,11 @@ import play from "./Play.svg";
 import detail from "./Detail.svg";
 import playWhite from "./play-white.svg";
 import star from "./star.svg";
+import world from "./world.svg";
 
 export {
   play,
+  world,
   star,
   playWhite,
   detail,

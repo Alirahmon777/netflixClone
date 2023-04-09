@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { detail, play } from "../assets/svg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Autoplay, EffectFade } from "swiper";
+import { Autoplay, EffectFade } from "swiper";
 import { PopularContext } from "../context/popularContext";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <Swiper
-      modules={[A11y, Autoplay, EffectFade]}
+      modules={[Autoplay, EffectFade]}
       spaceBetween={50}
       slidesPerView={1}
       speed={1000}
@@ -26,16 +26,16 @@ const Hero = () => {
         ) => (
           <SwiperSlide key={i}>
             <section
-              className="w-full h-full bg-cover"
+              className="w-full h-[1000px] bg-cover"
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original${backdrop_path})`,
               }}
             >
               <div className="w-full h-full bg-[rgba(0,0,0,0.4)] pb-5 shadow-inner">
                 <div className="container">
-                  <div className="text-white flex flex-col gap-[15px] w-[636px] pt-[200px]">
+                  <div className="text-white flex flex-col gap-[15px] w-[636px] pt-[180px]">
                     <div>
-                      <h1 className="text-[85px] font-['Bold'] inline relative">
+                      <h1 className="text-[85px] font-['Bold'] leading-[70px] inline relative">
                         {original_title}
                       </h1>
                     </div>

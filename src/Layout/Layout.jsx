@@ -9,7 +9,7 @@ const Layout = ({ redirectPath = "/signup" }) => {
   return (
     <>
       <Header />
-      <main className="bg-[#141414]">
+      <main className="bg-[#141414] pb-10">
         <Outlet />
       </main>
       <Footer />

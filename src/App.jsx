@@ -1,10 +1,4 @@
-import {
-  Navigate,
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import {
   Films,
   Home,
@@ -13,20 +7,25 @@ import {
   Cartoon,
   Series,
   SingleFilm,
+  SingleSeries,
   Trailer,
 } from "./pages";
 import SignUp from "./api/SignUp";
 import Layout from "./Layout/Layout";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      {localStorage.getItem("token") ? (
+function App() {
+  const { isLogin } = useContext(AuthContext);
+  return (
+    <Routes>
+      {isLogin ? (
         <>
           <Route path="/" element={<Navigate to={"/home"} replace />} />
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="series" element={<Series />} />
+            <Route path="series/:id" element={<SingleSeries />} />
             <Route path="films" element={<Films />} />
             <Route path="films-cartoons/:id" element={<SingleFilm />} />
             <Route path="films-cartoons/:id/trailer" element={<Trailer />} />
@@ -38,19 +37,10 @@ const router = createBrowserRouter(
       ) : (
         <>
           <Route path="*" element={<Navigate to={"/signup"} replace />} />
-
           <Route path="/signup" element={<SignUp />} />
         </>
       )}
-    </>
-  )
-);
-
-function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    </Routes>
   );
 }
 

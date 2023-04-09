@@ -9,10 +9,12 @@ const Trailer = () => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
-  let array = [];
+  let trailerArray = [];
 
-  trailer.map((trail) => array.push(trail.key));
-
+  trailer.map((trail) => trailerArray.push(trail));
+  const [trailerType] = trailerArray.filter((trail) =>
+    trail.type.toLowerCase().includes("trailer") ? trail.key : ""
+  );
   useEffect(() => {
     api()
       .get(`movie/${id}/videos?api_key=${API_KEY}`)
@@ -28,10 +30,12 @@ const Trailer = () => {
           Go Back
         </button>
 
-        <h2 className="text-white text-center text-4xl">TRAILER</h2>
+        <h2 className="text-white text-center my-4 text-4xl">
+          {trailerType?.name}
+        </h2>
 
         <iframe
-          src={`https://www.youtube.com/embed/${array[0]}?autoplay=1`}
+          src={`https://www.youtube.com/embed/${trailerType?.key}?autoplay=1`}
           className="w-[70%] h-[700px] shadow mx-auto"
           display="block"
           position="relative"

@@ -13,7 +13,6 @@ const NotFound = () => {
           <p className="text-2xl md:text-3xl text-white font-light leading-normal mb-8">
             Sorry we couldn't find the page you're looking for
           </p>
-
           <Link
             to={"/home"}
             className="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-lg focus:outline-none bg-red-600 active:bg-orange-400 hover:bg-orange-500"

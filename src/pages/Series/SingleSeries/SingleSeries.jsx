@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
-import { API_KEY, api } from "../../../utils/api";
+import { api } from "../../../utils/api";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { playWhite, star } from "../../../assets/svg";
+import { playWhite, star, world } from "../../../assets/svg";
 import { SwiperCartoon, SwiperPopular } from "../../../components";
 
-const SingleFilm = () => {
-  const [single, setSingle] = useState({});
+const SingleSeries = () => {
+  const [singleSeries, SetSingleSeries] = useState({});
   const { id } = useParams("id");
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const {
     vote_average,
     backdrop_path,
-    release_date,
-    genres,
-    title,
+    first_air_date,
+    name,
+    homepage,
     overview,
-    original_title,
+    genres,
+    original_name,
     original_language,
-  } = single;
+  } = singleSeries;
 
   useEffect(() => {
     api()
-      .get(`movie/${id}?api_key=${API_KEY}`)
-      .then(({ data }) => setSingle(data));
+      .get(`tv/${id}?api_key=05078d9c9a7971d554f489377ba90d87`)
+      .then(({ data }) => SetSingleSeries(data));
   }, [id]);
 
   return (
@@ -56,10 +57,10 @@ const SingleFilm = () => {
                       ))}
                 </div>
                 <h1 className="text-[64px] font-['Bold'] inline relative leading-[70px] mb-3">
-                  {title}
+                  {name}
                 </h1>
                 <h2 className="text-[24px] mb-3">
-                  Original Title - {original_title}
+                  Original Title - {original_name}
                 </h2>
                 <div className="flex">
                   <p className="py-1 px-3 font-['Bold'] border rounded-full">
@@ -68,17 +69,19 @@ const SingleFilm = () => {
                 </div>
               </div>
               <div className="flex gap-2 items-center mt-4">
-                <div className="flex items-center gap-2 border-r-2 pr-2">
-                  <img
-                    src={star}
-                    className="w-[30px] h-[30px] align-middle pb-1"
-                    alt="star"
-                  />
-                  <p className="text-white text-xl">
-                    {Math.round(vote_average)}
-                  </p>
-                </div>
-                <p className="text-xl border-r-2 pr-2">{release_date}</p>
+                {vote_average ? (
+                  <div className="flex items-center gap-2 border-r-2 pr-2">
+                    <img
+                      src={star}
+                      className="w-[30px] h-[30px] align-middle pb-1"
+                      alt="star"
+                    />
+                    <p className="text-white text-xl">
+                      {Math.round(vote_average)}
+                    </p>
+                  </div>
+                ) : null}
+                <p className="text-xl border-r-2 pr-2">{first_air_date}</p>
                 <p className="text-xl">
                   Language:
                   <span className="uppercase pl-3">{original_language}</span>
@@ -90,14 +93,29 @@ const SingleFilm = () => {
                   to={"trailer"}
                   className="py-[15px] px-[30px] bg-[#E50914] items-center text-[22px] font-['Bold'] gap-5 rounded-[4px] flex text-white"
                 >
-                  <img src={playWhite} className="w-[20px]" alt="play icon" />{" "}
+                  <img src={playWhite} className="w-[20px]" alt="play icon" />
                   Watch
                 </Link>
+                {homepage ? (
+                  <a
+                    href={homepage}
+                    target="_blank"
+                    className="py-[15px] px-[30px] bg-[rgba(250,250,250,0.4)] items-center text-[22px] font-['Bold'] gap-5 rounded-[4px] flex text-white"
+                  >
+                    <img
+                      src={world}
+                      className="w-[30px]"
+                      alt="world url icon"
+                    />
+                    Web Site
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <div className="container">
         <div className="z-10 text-white mt-4 pl-4">
           <h2 className="text-[26px] text-[#e5e5e5] font-['Medium']] mb-4">
@@ -116,4 +134,4 @@ const SingleFilm = () => {
   );
 };
 
-export default SingleFilm;
+export default SingleSeries;

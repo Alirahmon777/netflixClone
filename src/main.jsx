@@ -6,22 +6,28 @@ import {
   PopularContextProvider,
   RecomContextProvider,
   CartoonContextProvider,
+  AuthContextProvider,
+  SeriesContextProvider,
 } from "./context";
 import { SnackbarProvider } from "notistack";
-import AuthContextProvider from "./context/AuthContext";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SnackbarProvider autoHideDuration={1300} maxSnack={4}>
-      <PopularContextProvider>
-        <RecomContextProvider>
-          <CartoonContextProvider>
-            <AuthContextProvider>
-              <App />
-            </AuthContextProvider>
-          </CartoonContextProvider>
-        </RecomContextProvider>
-      </PopularContextProvider>
+      <BrowserRouter>
+        <PopularContextProvider>
+          <RecomContextProvider>
+            <CartoonContextProvider>
+              <AuthContextProvider>
+                <SeriesContextProvider>
+                  <App />
+                </SeriesContextProvider>
+              </AuthContextProvider>
+            </CartoonContextProvider>
+          </RecomContextProvider>
+        </PopularContextProvider>
+      </BrowserRouter>
     </SnackbarProvider>
   </React.StrictMode>
 );

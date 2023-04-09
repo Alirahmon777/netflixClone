@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DownArrow,
   GiftBox,
@@ -13,13 +13,30 @@ import { ProfileImg } from "../../assets/img";
 const Header = () => {
   const [search, setSearch] = useState("");
   const [isSearch, setIsSearch] = useState(false);
+  const [offset, setOffset] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        setOffset(true);
+      } else {
+        setOffset(false);
+      }
+    });
+  }, []);
 
   const searchHandler = () => {
     setIsSearch(!isSearch);
   };
 
   return (
-    <header className="py-[26px] bg-[#141414]">
+    <header
+      className={
+        offset
+          ? "py-[26px] sticky z-50 top-0 transition-all backdrop-blur-2xl"
+          : `py-[26px] bg-[#141414] transition-all`
+      }
+    >
       <div className="container">
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-[50px]">
@@ -46,7 +63,7 @@ const Header = () => {
                   }
                   to={"/series"}
                 >
-                  Series
+                  Series & TV shows
                 </NavLink>
               </li>
               <li>

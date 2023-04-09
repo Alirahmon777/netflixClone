@@ -8,7 +8,8 @@ import { enqueueSnackbar } from "notistack";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const { email, setEmail, password, setPassword } = useContext(AuthContext);
+  const { email, setEmail, password, setPassword, setIsLogin } =
+    useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +23,9 @@ const SignUp = () => {
           variant: "success",
         });
         localStorage.setItem("token", response.data.token);
-        window.location.replace("/");
+
+        setIsLogin(true);
+        navigate("/");
         return response.data;
       })
       .catch((error) => {

@@ -24,24 +24,26 @@ const SwiperPopular = () => {
       navigation
       loop
     >
-      {popular.map(({ original_title, title, poster_path, id }, i) => {
-        return (
-          <SwiperSlide key={i}>
-            <div className="relative transition-all films-post cursor-pointer rounded-lg overflow-hidden">
-              <Link to={`/films-cartoons/${id}`}>
-                <img
-                  className="rounded-lg transition-all hover:opacity-30"
-                  src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                  alt={original_title}
-                />
-                <p className="z-10 text-3xl absolute w-full transition-all bottom-0 films-text opacity-0 pointer-events-none text-center">
-                  {title}
-                </p>
-              </Link>
-            </div>
-          </SwiperSlide>
-        );
-      })}
+      {popular?.results?.map(
+        ({ original_title, title, poster_path, id }, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <div className="relative transition-all films-post cursor-pointer rounded-lg overflow-hidden">
+                <Link to={`/films-cartoons/${id}`}>
+                  <img
+                    className="rounded-lg transition-all hover:opacity-30"
+                    src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                    alt={original_title}
+                  />
+                  <p className="z-10 text-3xl absolute w-full transition-all bottom-0 films-text opacity-0 pointer-events-none text-center">
+                    {title}
+                  </p>
+                </Link>
+              </div>
+            </SwiperSlide>
+          );
+        }
+      )}
     </Swiper>
   );
 };
