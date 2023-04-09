@@ -19,7 +19,7 @@ const Hero = () => {
       autoHeight={true}
       loop
     >
-      {popular.map(
+      {popular.results?.map(
         (
           { original_title, backdrop_path, overview, title, release_date, id },
           i
